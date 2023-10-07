@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://c5bhu4vn33sp2"]
+
+[ext_resource type="Resource" uid="uid://btnu1ct6ct83h" path="res://Resources/Item/Lootables/Wood.tres" id="1_smg8d"]
+[ext_resource type="Script" path="res://Resources/ItemHolder/ItemHolder.gd" id="2_pb3x6"]
+[ext_resource type="Resource" uid="uid://blkl32tgk483d" path="res://Resources/Item/Blocs/StoneBloc.tres" id="3_23ks5"]
+[ext_resource type="Resource" uid="uid://dxhook7js5aqa" path="res://Resources/Item/Weapons/WoodSword/WoodSword4.tres" id="4_565m2"]
+[ext_resource type="Script" path="res://Resources/Recipes/BaseResource/Recipe.gd" id="5_gwy6v"]
+
+[sub_resource type="Resource" id="Resource_w6wrh"]
+script = ExtResource("2_pb3x6")
+item = ExtResource("1_smg8d")
+quantity = 15
+
+[sub_resource type="Resource" id="Resource_na8lj"]
+script = ExtResource("2_pb3x6")
+item = ExtResource("3_23ks5")
+quantity = 10
+
+[sub_resource type="Resource" id="Resource_8a54k"]
+script = ExtResource("2_pb3x6")
+item = ExtResource("4_565m2")
+quantity = 1
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("5_gwy6v")
+inputItems = Array[ExtResource("2_pb3x6")]([SubResource("Resource_w6wrh"), SubResource("Resource_na8lj")])
+outputItem = SubResource("Resource_8a54k")

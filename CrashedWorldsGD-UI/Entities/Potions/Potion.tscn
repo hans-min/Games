@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs28vxil7ctcl"]
+
+[ext_resource type="Script" path="res://Entities/Potions/Potion.gd" id="1_ormud"]
+[ext_resource type="Texture2D" uid="uid://u61bwxtyasox" path="res://UI/Icons/Potions/HealPotion.png" id="1_s4dfh"]
+[ext_resource type="AudioStream" uid="uid://1ul3hnohfdwg" path="res://Sound/Potion.mp3" id="3_15squ"]
+
+[node name="Potion" type="Sprite3D"]
+texture_filter = 0
+texture = ExtResource("1_s4dfh")
+script = ExtResource("1_ormud")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_15squ")

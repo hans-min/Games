@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ue2idfv23qgp"]
+
+[ext_resource type="Texture2D" uid="uid://borccbj211r4x" path="res://UI/Icons/Potions/LightPotion.png" id="1_k8j7i"]
+[ext_resource type="Script" path="res://Resources/Item/BaseResource/Item.gd" id="2_0it3h"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_0it3h")
+itemName = "Light Potion"
+type = ""
+icon = ExtResource("1_k8j7i")
+stack = 4
+canBeEquiped = true
+description = "'Cause baby you're a firework"
+objectScenePath = "res://Entities/Potions/Potion.tscn"
+upgrades = Array[Resource("res://Resources/Recipes/BaseResource/Recipe.gd")]([])

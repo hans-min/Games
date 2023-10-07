@@ -1,0 +1,187 @@
+[gd_scene load_steps=13 format=3 uid="uid://j87n4lychbt5"]
+
+[ext_resource type="FontFile" uid="uid://dg7sn1woyt4ah" path="res://Fonts/visitor1.ttf" id="1_id3u0"]
+[ext_resource type="Script" path="res://UI/main_menu_and_game_over/menu_options.gd" id="1_rfj2k"]
+[ext_resource type="PackedScene" uid="uid://bd5by43qp1c1x" path="res://Scenes/Main.tscn" id="2_wleg0"]
+[ext_resource type="PackedScene" uid="uid://bmkh1k2muxgng" path="res://UI/main_menu_and_game_over/menu_background.tscn" id="3_gxtyv"]
+[ext_resource type="AudioStream" uid="uid://hofo216hs7ps" path="res://Sound/Soundtrack/Ketracel.mp3" id="3_md1rl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmso0"]
+bg_color = Color(0.321569, 0.356863, 0.486275, 1)
+skew = Vector2(0.465, 0)
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46gnx"]
+bg_color = Color(0.160784, 0.184314, 0.262745, 1)
+skew = Vector2(0.465, 0)
+corner_detail = 20
+shadow_size = 1
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8x3mo"]
+bg_color = Color(0.301961, 0.521569, 0.768627, 1)
+skew = Vector2(0.465, 0)
+corner_detail = 20
+shadow_color = Color(0.847059, 0.847059, 0.847059, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="Theme" id="Theme_vf2pu"]
+default_font = ExtResource("1_id3u0")
+default_font_size = 24
+Button/styles/disabled = SubResource("StyleBoxFlat_kmso0")
+Button/styles/focus = SubResource("StyleBoxFlat_46gnx")
+Button/styles/hover = SubResource("StyleBoxFlat_46gnx")
+Button/styles/normal = SubResource("StyleBoxFlat_kmso0")
+Button/styles/pressed = SubResource("StyleBoxFlat_8x3mo")
+Label/fonts/font = ExtResource("1_id3u0")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ndqc3"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Gradient" id="Gradient_2i1n2"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v7xyy"]
+gradient = SubResource("Gradient_2i1n2")
+fill_from = Vector2(0.508547, 0)
+fill_to = Vector2(0.521368, 1)
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_vf2pu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("ViewportTexture_ndqc3")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 260)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_v7xyy")
+
+[node name="MarginContainer4" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+
+[node name="MarginContainer3" type="VBoxContainer" parent="MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer4/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/outline_size = 27
+theme_override_fonts/font = ExtResource("1_id3u0")
+theme_override_font_sizes/font_size = 64
+text = "CRASHED WORLDS"
+horizontal_alignment = 1
+
+[node name="Controls" type="Label" parent="MarginContainer4/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "CONTROLS
+Move: WASD / Arrow Key
+Inventory: E / TAB
+Pause : P / Echap"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_top = 245
+theme_override_constants/margin_right = 400
+
+[node name="MenuOptions" type="VBoxContainer" parent="MarginContainer2" node_paths=PackedStringArray("shortcut_context")]
+layout_mode = 2
+shortcut_context = NodePath("MarginContainer/Start")
+theme_override_constants/separation = 80
+alignment = 1
+script = ExtResource("1_rfj2k")
+gameplay_scene = ExtResource("2_wleg0")
+
+[node name="MarginContainer" type="VBoxContainer" parent="MarginContainer2/MenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Start" type="Button" parent="MarginContainer2/MenuOptions/MarginContainer"]
+custom_minimum_size = Vector2(512, 48)
+layout_mode = 2
+text = "Start"
+
+[node name="BiomeButton" type="OptionButton" parent="MarginContainer2/MenuOptions/MarginContainer"]
+custom_minimum_size = Vector2(512, 48)
+layout_mode = 2
+alignment = 1
+item_count = 3
+selected = 1
+popup/item_0/text = "Random"
+popup/item_0/id = 0
+popup/item_1/text = "Forest Biome"
+popup/item_1/id = 1
+popup/item_2/text = "Desert Biome"
+popup/item_2/id = 2
+
+[node name="SizeButton" type="OptionButton" parent="MarginContainer2/MenuOptions/MarginContainer"]
+custom_minimum_size = Vector2(512, 48)
+layout_mode = 2
+alignment = 1
+item_count = 2
+selected = 0
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "Giant"
+popup/item_1/id = 1
+
+[node name="Quit" type="Button" parent="MarginContainer2/MenuOptions/MarginContainer"]
+custom_minimum_size = Vector2(512, 48)
+layout_mode = 2
+text = "Quit"
+
+[node name="Credit" type="Label" parent="MarginContainer2/MenuOptions"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "A game by Group C L3
+Version 1.0"
+horizontal_alignment = 1
+
+[node name="SubViewport" type="SubViewport" parent="."]
+msaa_2d = 3
+use_debanding = true
+size = Vector2i(1920, 1080)
+
+[node name="MenuBackground" parent="SubViewport" instance=ExtResource("3_gxtyv")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_md1rl")
+autoplay = true
+
+[connection signal="pressed" from="MarginContainer2/MenuOptions/MarginContainer/Start" to="MarginContainer2/MenuOptions" method="_on_start_pressed"]
+[connection signal="item_selected" from="MarginContainer2/MenuOptions/MarginContainer/BiomeButton" to="MarginContainer2/MenuOptions" method="_on_biome_button_item_selected"]
+[connection signal="item_selected" from="MarginContainer2/MenuOptions/MarginContainer/SizeButton" to="MarginContainer2/MenuOptions" method="_on_size_button_item_selected"]
+[connection signal="pressed" from="MarginContainer2/MenuOptions/MarginContainer/Quit" to="MarginContainer2/MenuOptions" method="_on_quit_pressed"]

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cgnel33flegwx"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuButton" type="MenuButton" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 26.0
+offset_right = 276.0
+offset_bottom = 34.0
+text = "Select"
+item_count = 2
+popup/item_0/text = "Base World"
+popup/item_0/id = 0
+popup/item_1/text = "Desert"
+popup/item_1/id = 1

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://brweaxj1dm7fl"]
+
+[ext_resource type="Texture2D" uid="uid://blp580fyc3780" path="res://UI/Icons/Lootables/RedBerries.png" id="1_w4bnj"]
+[ext_resource type="Script" path="res://Resources/Item/BaseResource/Item.gd" id="2_pnqsd"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_pnqsd")
+itemName = "Red Berries"
+type = ""
+icon = ExtResource("1_w4bnj")
+stack = 16
+canBeEquiped = true
+description = "Seem to have some healing properties."
+objectScenePath = ""
+upgrades = Array[Resource("res://Resources/Recipes/BaseResource/Recipe.gd")]([])

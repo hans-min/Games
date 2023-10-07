@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GenFile" load_steps=2 format=3 uid="uid://gwwq7p08i2l5"]
+
+[ext_resource type="Script" path="res://Resources/GenFile/GenFile.gd" id="1_kmi2e"]
+
+[resource]
+script = ExtResource("1_kmi2e")
+isWater = true
+waterHeight = 0.75
+isWaterBorder = true
+waterBorderBloc = 0
+layers = Array[int]([])
+spawnableAI = Array[Resource("res://Resources/Spawnable/Spawnable.gd")]([])
+spawnableOBJ = Array[Resource("res://Resources/Spawnable/Spawnable.gd")]([])

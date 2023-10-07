@@ -1,0 +1,192 @@
+[gd_scene load_steps=15 format=3 uid="uid://cq34er7hpue13"]
+
+[ext_resource type="Script" path="res://Entities/Weapons/WoodSword.gd" id="1_lwjhg"]
+[ext_resource type="Resource" uid="uid://dxhook7js5aqa" path="res://Resources/Item/Weapons/WoodSword/WoodSword4.tres" id="2_xx8ht"]
+[ext_resource type="Script" path="res://Resources/ItemHolder/ItemHolder.gd" id="3_8gg4g"]
+[ext_resource type="Texture2D" uid="uid://dqwii7qj65yf" path="res://UI/Icons/Weapons/WoodSword/WoodSword4.png" id="4_qj8e4"]
+[ext_resource type="Texture2D" uid="uid://djk7p64i5l731" path="res://textures/Particles/leaf.png" id="5_4hgu8"]
+[ext_resource type="AudioStream" uid="uid://ihui3c7mqa5e" path="res://Sound/hit_2.mp3" id="6_p6kn0"]
+
+[sub_resource type="Resource" id="Resource_lnlbu"]
+script = ExtResource("3_8gg4g")
+item = ExtResource("2_xx8ht")
+quantity = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xsdsh"]
+custom_solver_bias = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fh1xj"]
+transparency = 1
+albedo_texture = ExtResource("5_4hgu8")
+texture_filter = 0
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_3xw04"]
+material = SubResource("StandardMaterial3D_fh1xj")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="Curve" id="Curve_giwwu"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.128821, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Animation" id="Animation_w7gbr"]
+resource_name = "Attack"
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.175, 0.3, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 3, 0), Vector3(0.7, 3, 0), Vector3(0.7, 0, 0), Vector3(0.7, 0, 0), Vector3(0.7, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.175, 0.3, 0.45, 0.6, 0.7, 0.8, 0.95, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.785398), Vector3(0, 0, 0.785398), Vector3(0, 0, 0.785398), Vector3(0, 0, -0.785398), Vector3(0, 0, -2.35619), Vector3(0, 0, -2.35619), Vector3(0, 0, -2.35619), Vector3(0, 0, -2.35619), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.225, 0.325, 0.6, 0.7, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(2, 2, 2), Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D/Area3D/CollisionShape3D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.625, 0.875, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Burst:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.625, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_h453s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fpjyx"]
+_data = {
+"Attack": SubResource("Animation_w7gbr"),
+"RESET": SubResource("Animation_h453s")
+}
+
+[node name="Sword" type="Node3D"]
+script = ExtResource("1_lwjhg")
+item = SubResource("Resource_lnlbu")
+damage = 2
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+offset = Vector2(6, 6)
+shaded = true
+texture_filter = 0
+texture = ExtResource("4_qj8e4")
+
+[node name="Area3D" type="Area3D" parent="Sprite3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/Area3D"]
+shape = SubResource("BoxShape3D_xsdsh")
+disabled = true
+
+[node name="Idle" type="CPUParticles3D" parent="Sprite3D"]
+transform = Transform3D(-0.353553, -0.353553, 0, 0.353553, -0.353553, 0, 0, 0, 0.5, 0.212132, -0.282843, 0)
+amount = 2
+mesh = SubResource("QuadMesh_3xw04")
+emission_shape = 3
+emission_box_extents = Vector3(0.1, 0.1, 0.1)
+gravity = Vector3(0, -0.5, 0)
+scale_amount_min = 0.1
+scale_amount_curve = SubResource("Curve_giwwu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fpjyx")
+}
+
+[node name="Burst" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.777995, -0.0636145, 0)
+emitting = false
+amount = 20
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_3xw04")
+direction = Vector3(0, 1, 0)
+spread = 30.0
+gravity = Vector3(0, -5, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+scale_amount_min = 0.1
+scale_amount_curve = SubResource("Curve_giwwu")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_p6kn0")
+volume_db = -13.631
+
+[connection signal="body_entered" from="Sprite3D/Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bbsim6ecf7vmr"
+path="res://.godot/imported/Horizon of Appearances.mp3-1dfa7cca49e786fba3358267ca9eef16.mp3str"
+
+[deps]
+
+source_file="res://Sound/Soundtrack/Horizon of Appearances.mp3"
+dest_files=["res://.godot/imported/Horizon of Appearances.mp3-1dfa7cca49e786fba3358267ca9eef16.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

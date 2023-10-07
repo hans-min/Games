@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://calxw4nwdgiss"]
+
+[ext_resource type="Script" path="res://Scenes/Firebase/firebase.gd" id="1_ys27n"]
+[ext_resource type="Script" path="res://addons/godot-firebase/firestore/firestore.gd" id="2_hy41u"]
+
+[node name="Firebase" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ys27n")
+
+[node name="FirebaseFirestore" type="Node" parent="."]
+script = ExtResource("2_hy41u")

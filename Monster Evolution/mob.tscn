@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://cw6yt3jpx5td0"]
+
+[ext_resource type="Script" path="res://mob.gd" id="1_2b6qh"]
+[ext_resource type="Texture2D" uid="uid://dst2ootwahla2" path="res://Legacy-Fantasy - High Forest 2.3/Mob/Snail/walk-Sheet.png" id="1_dobl2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dv2ts"]
+size = Vector2(27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoacx"]
+atlas = ExtResource("1_dobl2")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx85m"]
+atlas = ExtResource("1_dobl2")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpxd7"]
+atlas = ExtResource("1_dobl2")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82r11"]
+atlas = ExtResource("1_dobl2")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehec2"]
+atlas = ExtResource("1_dobl2")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1iqx"]
+atlas = ExtResource("1_dobl2")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck8un"]
+atlas = ExtResource("1_dobl2")
+region = Rect2(288, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wi2b"]
+atlas = ExtResource("1_dobl2")
+region = Rect2(336, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8rcaa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aoacx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx85m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpxd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82r11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehec2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1iqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck8un")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wi2b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="mob" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+script = ExtResource("1_2b6qh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_dv2ts")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8rcaa")
+autoplay = "default"
+
+[node name="EdgeDetectorLeft" type="RayCast2D" parent="."]
+position = Vector2(-14, 0)
+
+[node name="EdgeDetectorRight" type="RayCast2D" parent="."]
+position = Vector2(14, -2)
+
+[node name="FloorDetector" type="RayCast2D" parent="."]

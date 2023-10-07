@@ -1,0 +1,348 @@
+[gd_scene load_steps=44 format=3 uid="uid://bd5by43qp1c1x"]
+
+[ext_resource type="PackedScene" uid="uid://bsjauuteiuy6g" path="res://Entities/Player/Player.tscn" id="1_72tnd"]
+[ext_resource type="Script" path="res://Scenes/Main.gd" id="1_rpshw"]
+[ext_resource type="Script" path="res://Scenes/DirectionalLight3D.gd" id="2_8hjl4"]
+[ext_resource type="Environment" uid="uid://hlddlkmhxv7o" path="res://Resources/Environments/DesertEnvironment.tres" id="3_dckn3"]
+[ext_resource type="MeshLibrary" uid="uid://d3d2k04isri4g" path="res://Gridmaps/Defaut/GridmapDefault.tres" id="4_38xhp"]
+[ext_resource type="PackedScene" uid="uid://c5i2tqrb6vp5k" path="res://Entities/ItemDrop/ItemDrop.tscn" id="5_8il38"]
+[ext_resource type="Script" path="res://Scenes/GridMapScript.gd" id="5_d2vqj"]
+[ext_resource type="Script" path="res://Resources/EntityStats/EntityStats.gd" id="5_jt1x7"]
+[ext_resource type="Shader" path="res://Shaders/Water.gdshader" id="5_la4yr"]
+[ext_resource type="Script" path="res://Scenes/Spawner.gd" id="7_48doi"]
+[ext_resource type="Resource" uid="uid://c6aeamlqqysvf" path="res://Resources/GenFile/Worlds/Desert.tres" id="7_lp4sj"]
+[ext_resource type="Resource" uid="uid://c1eklynr0u7a0" path="res://Resources/GenFile/Worlds/BaseWorld.tres" id="7_m7k4h"]
+[ext_resource type="Resource" uid="uid://celm4ww0pyl5g" path="res://Resources/Item/Tools/WoodPickaxe/WoodPickaxe.tres" id="9_h80yc"]
+[ext_resource type="Script" path="res://Resources/ItemHolder/ItemHolder.gd" id="11_7tw0u"]
+[ext_resource type="PackedScene" uid="uid://frneucsl7hc4" path="res://Entities/Spaceship/spaceship_glb.tscn" id="13_287rg"]
+[ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://UI/main_menu_and_game_over/paused/paused.tscn" id="15_wd8as"]
+[ext_resource type="Script" path="res://Scenes/SoundtrackManager.gd" id="17_mxgxi"]
+[ext_resource type="AudioStream" uid="uid://dt21vitvs3oxg" path="res://Sound/Soundtrack/Transience of Earthly Joys.mp3" id="18_td7g7"]
+[ext_resource type="AudioStream" uid="uid://0ii3xsxp2hbs" path="res://Sound/Soundtrack/A False Seeming.mp3" id="18_ve3oq"]
+[ext_resource type="AudioStream" uid="uid://cj3gdqf3w3h6g" path="res://Sound/Soundtrack/Die in Fascination.mp3" id="21_2et80"]
+[ext_resource type="AudioStream" uid="uid://bbsim6ecf7vmr" path="res://Sound/Soundtrack/Horizon of Appearances.mp3" id="22_67qsi"]
+[ext_resource type="AudioStream" uid="uid://hofo216hs7ps" path="res://Sound/Soundtrack/Ketracel.mp3" id="23_7bb1i"]
+[ext_resource type="AudioStream" uid="uid://c1dtpbsw7nlbk" path="res://Sound/Soundtrack/Same River Twice.mp3" id="24_oqdq4"]
+[ext_resource type="AudioStream" uid="uid://dxcukp3ae0tth" path="res://Sound/Soundtrack/Strands.mp3" id="25_cln31"]
+[ext_resource type="AudioStream" uid="uid://bjr81p18rdadh" path="res://Sound/Soundtrack/Time We Have.mp3" id="26_hefup"]
+[ext_resource type="AudioStream" uid="uid://b12q7llhwr5v8" path="res://Sound/PlaceBlock.mp3" id="26_ullav"]
+[ext_resource type="PackedScene" uid="uid://bnygeehxyovjy" path="res://Scenes/LoadingScreen.tscn" id="27_aukya"]
+[ext_resource type="AudioStream" uid="uid://car66h1b6aah5" path="res://Sound/Sand.mp3" id="27_wvn7d"]
+
+[sub_resource type="Resource" id="Resource_2b2jd"]
+resource_local_to_scene = true
+script = ExtResource("5_jt1x7")
+life = 5
+maxLife = 10
+
+[sub_resource type="QuadMesh" id="QuadMesh_8eu0e"]
+size = Vector2(500, 500)
+subdivide_width = 200
+subdivide_depth = 200
+orientation = 1
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fsw6o"]
+noise_type = 3
+frequency = 0.001
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qiju0"]
+seamless = true
+as_normal_map = true
+bump_strength = 1.5
+noise = SubResource("FastNoiseLite_fsw6o")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vnrfb"]
+noise_type = 3
+seed = 43
+frequency = 0.001
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8k7gc"]
+seamless = true
+as_normal_map = true
+bump_strength = 1.5
+noise = SubResource("FastNoiseLite_vnrfb")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gesl5"]
+noise_type = 0
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fwfjg"]
+seamless = true
+noise = SubResource("FastNoiseLite_gesl5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hvuv8"]
+render_priority = 0
+shader = ExtResource("5_la4yr")
+shader_parameter/albedo = Color(0.14902, 0.670588, 0.690196, 1)
+shader_parameter/albedo_fresnel = Color(0.996078, 0.54902, 0.858824, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.11
+shader_parameter/wave_dir = Vector2(2, 0)
+shader_parameter/wave_dir2 = Vector2(2, 1)
+shader_parameter/time_scale = 0.06
+shader_parameter/noise_scale = 10.0
+shader_parameter/height_scale = 0.25
+shader_parameter/color_deep = Color(0.0509804, 0, 0.458824, 1)
+shader_parameter/color_shallow = Color(0.345098, 0.898039, 0.811765, 1)
+shader_parameter/beers_law = 2.0
+shader_parameter/depth_offset = -0.75
+shader_parameter/edge_scale = 0.792
+shader_parameter/near = 0.5
+shader_parameter/far = 100.0
+shader_parameter/edge_color = Color(0.937255, 0.937255, 1, 1)
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_qiju0")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_8k7gc")
+shader_parameter/wave = SubResource("NoiseTexture2D_fwfjg")
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hvhuh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82xw4"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1.5, 1.25, 1.25, 1)
+texture_filter = 2
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_6xl5u"]
+material = SubResource("StandardMaterial3D_82xw4")
+
+[sub_resource type="Curve" id="Curve_173al"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0656934, 1), -0.196651, -0.196651, 0, 0, Vector2(0.894161, 0.509091), 0.0655506, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_5cx25"]
+offsets = PackedFloat32Array(0, 0.144033, 0.407407, 0.843621)
+colors = PackedColorArray(0.7, 0.455, 0, 1, 0.728571, 0.0961304, 0.0308007, 1, 0.03125, 0.00181246, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_yau76"]
+resource_local_to_scene = true
+script = ExtResource("11_7tw0u")
+item = ExtResource("9_h80yc")
+quantity = 1
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_rpshw")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.516533, 0.856267, 0, -0.856267, -0.516533, 0, 0, 0)
+light_color = Color(0.964706, 0.764706, 0.6, 1)
+light_energy = 0.9
+shadow_enabled = true
+shadow_bias = 0.606
+shadow_blur = 0.1
+script = ExtResource("2_8hjl4")
+
+[node name="Skybox" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_dckn3")
+
+[node name="Player" parent="." instance=ExtResource("1_72tnd")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 143.68, 60, 122.568)
+Stats = SubResource("Resource_2b2jd")
+
+[node name="GridMap" type="GridMap" parent="."]
+process_mode = 3
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+mesh_library = ExtResource("4_38xhp")
+cell_size = Vector3(1, 1, 1)
+script = ExtResource("5_d2vqj")
+possibleGen = Array[Resource("res://Resources/GenFile/GenFile.gd")]([ExtResource("7_m7k4h"), ExtResource("7_lp4sj")])
+
+[node name="Spawner" type="Node3D" parent="GridMap"]
+script = ExtResource("7_48doi")
+
+[node name="WaterPlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 1.35, 250)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_8eu0e")
+surface_material_override/0 = SubResource("ShaderMaterial_hvuv8")
+
+[node name="WaterPlane" type="Area3D" parent="WaterPlane"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="WaterPlane" type="CollisionShape3D" parent="WaterPlane/WaterPlane"]
+shape = SubResource("WorldBoundaryShape3D_hvhuh")
+
+[node name="CrashedSpaceship" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.15, 2, 116.054)
+
+[node name="Spaceship" parent="CrashedSpaceship" instance=ExtResource("13_287rg")]
+transform = Transform3D(0.814288, -0.580461, 0, 0.580461, 0.814288, 0, 0, 0, 1, -2.07478, 0.845786, 3.55238)
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="CrashedSpaceship"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.412895, 1.29615, 5.25912)
+transparency = 0.06
+cast_shadow = 0
+amount = 20
+lifetime = 1.5
+draw_order = 2
+mesh = SubResource("QuadMesh_6xl5u")
+direction = Vector3(0, 1, 0)
+spread = 33.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.75
+initial_velocity_max = 1.25
+angle_max = 180.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_173al")
+color_ramp = SubResource("Gradient_5cx25")
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="CrashedSpaceship"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84394, -0.37347, 5.25912)
+transparency = 0.06
+cast_shadow = 0
+amount = 20
+lifetime = 1.5
+draw_order = 2
+mesh = SubResource("QuadMesh_6xl5u")
+direction = Vector3(0, 1, 0)
+spread = 33.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.75
+initial_velocity_max = 1.25
+angle_max = 180.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_173al")
+color_ramp = SubResource("Gradient_5cx25")
+
+[node name="CPUParticles3D3" type="CPUParticles3D" parent="CrashedSpaceship"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59904, 0.291973, 5.32467)
+transparency = 0.06
+cast_shadow = 0
+amount = 20
+lifetime = 3.5
+draw_order = 2
+mesh = SubResource("QuadMesh_6xl5u")
+direction = Vector3(0, 1, 0)
+spread = 33.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.75
+initial_velocity_max = 1.25
+angle_max = 180.0
+scale_amount_min = 1.25
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_173al")
+color_ramp = SubResource("Gradient_5cx25")
+
+[node name="CPUParticles3D4" type="CPUParticles3D" parent="CrashedSpaceship"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.84094, 4.6144, 4.77042)
+transparency = 0.06
+cast_shadow = 0
+amount = 20
+lifetime = 2.5
+draw_order = 2
+mesh = SubResource("QuadMesh_6xl5u")
+direction = Vector3(0, 1, 0)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.75
+initial_velocity_max = 1.25
+angle_max = 180.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_173al")
+color_ramp = SubResource("Gradient_5cx25")
+
+[node name="CPUParticles3D5" type="CPUParticles3D" parent="CrashedSpaceship"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.31755, 7.47331, 5.03529)
+transparency = 0.06
+cast_shadow = 0
+amount = 20
+lifetime = 1.5
+draw_order = 2
+mesh = SubResource("QuadMesh_6xl5u")
+direction = Vector3(0, 1, 0)
+spread = 33.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.75
+initial_velocity_max = 1.25
+angle_max = 180.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_173al")
+color_ramp = SubResource("Gradient_5cx25")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CrashedSpaceship"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48171, 4.92302, 5.11139)
+light_color = Color(1, 0.607843, 0.2, 1)
+omni_range = 1.79222
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="CrashedSpaceship"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85329, 2.35067, 4.12545)
+light_color = Color(1, 0.607843, 0.2, 1)
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 12.579
+omni_attenuation = 0.63728
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="CrashedSpaceship"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.49956, 1.17678, 5.37626)
+light_color = Color(1, 0.607843, 0.2, 1)
+omni_range = 1.79222
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="CrashedSpaceship"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.623051, 1.25655, 5.37626)
+light_color = Color(1, 0.607843, 0.2, 1)
+omni_range = 1.79222
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="CrashedSpaceship"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.28419, 7.65606, 4.90202)
+light_color = Color(1, 0.607843, 0.2, 1)
+omni_range = 1.57195
+
+[node name="Pickaxe" parent="." instance=ExtResource("5_8il38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.68, 60, 122.568)
+item = SubResource("Resource_yau76")
+
+[node name="Paused" parent="." instance=ExtResource("15_wd8as")]
+visible = false
+
+[node name="StManager" type="Node3D" parent="."]
+script = ExtResource("17_mxgxi")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StManager"]
+stream = ExtResource("18_td7g7")
+bus = &"Soundtrack"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="StManager"]
+stream = ExtResource("18_ve3oq")
+bus = &"Soundtrack"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="StManager"]
+stream = ExtResource("21_2et80")
+bus = &"Soundtrack"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="StManager"]
+stream = ExtResource("22_67qsi")
+bus = &"Soundtrack"
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="StManager"]
+stream = ExtResource("23_7bb1i")
+bus = &"Soundtrack"
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="StManager"]
+stream = ExtResource("24_oqdq4")
+bus = &"Soundtrack"
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="StManager"]
+stream = ExtResource("25_cln31")
+bus = &"Soundtrack"
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="StManager"]
+stream = ExtResource("26_hefup")
+bus = &"Soundtrack"
+
+[node name="PlaceBlocSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_ullav")
+
+[node name="DestroyBlockSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_wvn7d")
+
+[node name="Loading" parent="." instance=ExtResource("27_aukya")]
+process_mode = 3
+layer = 2

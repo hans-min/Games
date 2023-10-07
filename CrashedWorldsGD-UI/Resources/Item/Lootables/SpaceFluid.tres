@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://draqe6tm7hpkd"]
+
+[ext_resource type="Script" path="res://Resources/Item/BaseResource/Item.gd" id="1_5m77n"]
+[ext_resource type="Texture2D" uid="uid://sk1thiohjdl0" path="res://UI/Icons/Lootables/SpaceshipFluid.png" id="1_s0age"]
+
+[resource]
+script = ExtResource("1_5m77n")
+itemName = "Space Fluid"
+type = ""
+icon = ExtResource("1_s0age")
+stack = 1
+canBeEquiped = true
+description = "This nano fluid can repair your ship. gg ez"
+objectScenePath = ""
+upgrades = Array[Resource("res://Resources/Recipes/BaseResource/Recipe.gd")]([])

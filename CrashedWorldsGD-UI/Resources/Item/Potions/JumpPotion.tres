@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cd3776npj4oim"]
+
+[ext_resource type="Texture2D" uid="uid://dijx4djddrtc4" path="res://UI/Icons/Potions/JumpPotion.png" id="1_kvjjt"]
+[ext_resource type="Script" path="res://Resources/Item/BaseResource/Item.gd" id="2_3ay3r"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_3ay3r")
+itemName = "Jump Potion"
+type = ""
+icon = ExtResource("1_kvjjt")
+stack = 4
+canBeEquiped = true
+description = "The more it smells, the better it is."
+objectScenePath = "res://Entities/Potions/Potion.tscn"
+upgrades = Array[Resource("res://Resources/Recipes/BaseResource/Recipe.gd")]([])

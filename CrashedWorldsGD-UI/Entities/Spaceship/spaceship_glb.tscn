@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://frneucsl7hc4"]
+
+[ext_resource type="PackedScene" uid="uid://dsccm2dkxa5g6" path="res://Entities/Spaceship/Spaceship.glb" id="1_2uk3t"]
+[ext_resource type="Script" path="res://Entities/Spaceship/SpaceshipTrigger.gd" id="2_q41cp"]
+[ext_resource type="Material" uid="uid://bjp1ed5l576ml" path="res://Entities/Spaceship/ShipMetal_2.tres" id="2_q8422"]
+[ext_resource type="Resource" uid="uid://draqe6tm7hpkd" path="res://Resources/Item/Lootables/SpaceFluid.tres" id="4_pyl4s"]
+[ext_resource type="Script" path="res://Resources/ItemHolder/ItemHolder.gd" id="5_1svao"]
+[ext_resource type="AudioStream" uid="uid://byqdfjv1ivyxo" path="res://Sound/Fire.mp3" id="6_0akh3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlqij"]
+transparency = 1
+albedo_color = Color(0.796078, 1, 0.921569, 0.615686)
+
+[sub_resource type="Resource" id="Resource_qlfno"]
+script = ExtResource("5_1svao")
+item = ExtResource("4_pyl4s")
+quantity = 3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rj3w3"]
+radius = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_287cu"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Spaceship" instance=ExtResource("1_2uk3t")]
+
+[node name="Base" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_q8422")
+
+[node name="Cockpit" parent="." index="1"]
+transform = Transform3D(2.38886, 0, 0, 0, 2.40565, 0, 0, 0, 2.81943, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_xlqij")
+
+[node name="Area3D" type="Area3D" parent="Cockpit" index="0"]
+monitorable = false
+script = ExtResource("2_q41cp")
+itemToCheck = SubResource("Resource_qlfno")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cockpit/Area3D" index="0"]
+shape = SubResource("SphereShape3D_rj3w3")
+
+[node name="Label" type="Label" parent="Cockpit/Area3D" index="1"]
+offset_left = 41.0
+offset_top = 84.0
+offset_right = 376.0
+offset_bottom = 136.0
+label_settings = SubResource("LabelSettings_287cu")
+autowrap_mode = 3
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="2"]
+stream = ExtResource("6_0akh3")
+unit_size = 15.69
+autoplay = true
+max_distance = 30.0
+bus = &"ShipFire"
+
+[connection signal="body_entered" from="Cockpit/Area3D" to="Cockpit/Area3D" method="_on_body_entered"]

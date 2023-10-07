@@ -1,0 +1,580 @@
+[gd_scene load_steps=59 format=3 uid="uid://bsjauuteiuy6g"]
+
+[ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_ku8ux"]
+[ext_resource type="Texture2D" uid="uid://htc6djlq12lo" path="res://Entities/Player/PlayerIdle-sheet.png" id="2_eqb5d"]
+[ext_resource type="Script" path="res://Resources/EntityStats/EntityStats.gd" id="2_rpjfo"]
+[ext_resource type="Texture2D" uid="uid://cnfcobak8gkhn" path="res://Entities/Player/playerRun-sheet.png" id="3_rueil"]
+[ext_resource type="PackedScene" uid="uid://c8muusfrhdpa6" path="res://Resources/EntityStats/EntityStats.tscn" id="4_27sjq"]
+[ext_resource type="Script" path="res://Entities/Player/Inventory/Inventory.gd" id="4_bored"]
+[ext_resource type="Script" path="res://Resources/Recipes/RecipeBook/RecipeBook.gd" id="6_8wuxk"]
+[ext_resource type="Resource" uid="uid://6v0ctqvcbc7l" path="res://Resources/Recipes/Potions/RCP_HealPotion.tres" id="7_e4vy8"]
+[ext_resource type="Texture2D" uid="uid://d2xnuea0drh02" path="res://UI/Icons/Weapons/WoodSword/WoodSword1.png" id="7_efttr"]
+[ext_resource type="Resource" uid="uid://daqcbyufhs6p" path="res://Resources/Recipes/Weapons/WoodSword.tres" id="9_p7lfi"]
+[ext_resource type="Resource" uid="uid://qil8pbg7tyl2" path="res://Resources/Recipes/Potions/RCP_LifePotion.tres" id="9_qutkc"]
+[ext_resource type="Texture2D" uid="uid://de27udxc8j5r1" path="res://UI/Menus/Key1.png" id="10_t3vro"]
+[ext_resource type="Resource" uid="uid://b4sehtowbeqcu" path="res://Resources/Recipes/Potions/RCP_SpeedPotion.tres" id="10_x765j"]
+[ext_resource type="Resource" uid="uid://3t1ms16egh3d" path="res://Resources/Recipes/Potions/RCP_JumpPotion.tres" id="11_j7w33"]
+[ext_resource type="PackedScene" uid="uid://c6srr7375uwg7" path="res://UI/Nodes/PinBox/PinBox.tscn" id="11_yk0t8"]
+[ext_resource type="Resource" uid="uid://dtt6oakfw64aj" path="res://Resources/Recipes/Potions/RCP_LightPotion.tres" id="12_6wvi5"]
+[ext_resource type="Resource" uid="uid://e4rhwt6140cy" path="res://Resources/Recipes/Potions/RCP_TPPotion.tres" id="13_kvy7i"]
+[ext_resource type="Texture2D" uid="uid://d01uaxpi15cyh" path="res://UI/Menus/Key2.png" id="13_s2qme"]
+[ext_resource type="Texture2D" uid="uid://babidltcl55p5" path="res://UI/Menus/Key3.png" id="14_atvqu"]
+[ext_resource type="Texture2D" uid="uid://bhhqpaysqveyi" path="res://UI/Menus/Key4.png" id="15_13f7p"]
+[ext_resource type="FontFile" uid="uid://c4oo1jaf7uqrn" path="res://UI/Fonts/pixelmix.ttf" id="16_yr3ct"]
+[ext_resource type="PackedScene" uid="uid://ir6e0caw3vv2" path="res://UI/Nodes/RecipeNode/Upgrade1.tscn" id="17_2jifu"]
+[ext_resource type="PackedScene" uid="uid://cwb0wa3v00ngc" path="res://NodeCollection/PhysicBubble/physic_bubble.tscn" id="19_b5dit"]
+[ext_resource type="AudioStream" uid="uid://br7o2j2axa0sk" path="res://Sound/Grass.mp3" id="20_7xpam"]
+[ext_resource type="AudioStream" uid="uid://btndh08xnj7i4" path="res://Sound/Stone.mp3" id="21_off7s"]
+[ext_resource type="AudioStream" uid="uid://7kn3xnvrqfcf" path="res://Sound/weapon_swing.mp3" id="23_1olkk"]
+[ext_resource type="AudioStream" uid="uid://c46ovghqpuej7" path="res://Sound/InWater.mp3" id="23_e0mvs"]
+[ext_resource type="AudioStream" uid="uid://car66h1b6aah5" path="res://Sound/Sand.mp3" id="23_jgisj"]
+[ext_resource type="AudioStream" uid="uid://cfi8r4eek70k" path="res://Sound/Ambient_birds.mp3" id="24_jju4s"]
+[ext_resource type="AudioStream" uid="uid://bpryq8nfciae1" path="res://Sound/Craft.mp3" id="25_ijdgi"]
+
+[sub_resource type="Resource" id="Resource_5fhkh"]
+resource_local_to_scene = true
+script = ExtResource("2_rpjfo")
+life = 5
+maxLife = 10
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hf6lr"]
+radius = 0.16
+height = 0.8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agyqk"]
+atlas = ExtResource("2_eqb5d")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ek2r"]
+atlas = ExtResource("2_eqb5d")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17d0w"]
+atlas = ExtResource("2_eqb5d")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14daj"]
+atlas = ExtResource("2_eqb5d")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvnic"]
+atlas = ExtResource("3_rueil")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n06f5"]
+atlas = ExtResource("3_rueil")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sk6m5"]
+atlas = ExtResource("3_rueil")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kaf4m"]
+atlas = ExtResource("3_rueil")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4yh8"]
+atlas = ExtResource("3_rueil")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhkkq"]
+atlas = ExtResource("3_rueil")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv1jg"]
+atlas = ExtResource("3_rueil")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl82i"]
+atlas = ExtResource("3_rueil")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ggo5k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agyqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ek2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17d0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14daj")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvnic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n06f5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sk6m5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kaf4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4yh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhkkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv1jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl82i")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
+}]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_egohb"]
+viewport_path = NodePath("Life/SubViewport")
+
+[sub_resource type="Resource" id="Resource_cmvo1"]
+script = ExtResource("6_8wuxk")
+recipes = Array[Resource("res://Resources/Recipes/BaseResource/Recipe.gd")]([ExtResource("9_p7lfi"), ExtResource("7_e4vy8"), ExtResource("9_qutkc"), ExtResource("10_x765j"), ExtResource("11_j7w33"), ExtResource("12_6wvi5"), ExtResource("13_kvy7i")])
+
+[sub_resource type="Theme" id="Theme_d781l"]
+default_font = ExtResource("16_yr3ct")
+default_font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3g1n"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[sub_resource type="Animation" id="Animation_4vkhd"]
+resource_name = "Vignette"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vignette:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kg0qm"]
+_data = {
+"Vignette": SubResource("Animation_4vkhd")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hy67e"]
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftfcy"]
+vertex_color_use_as_albedo = true
+metallic_specular = 1.0
+roughness = 0.0
+emission = Color(0.427451, 0.427451, 0.427451, 1)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_pr1aj"]
+material = SubResource("StandardMaterial3D_ftfcy")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="Curve" id="Curve_8xhdn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.378224, 0.947368), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_0hgmr"]
+offsets = PackedFloat32Array(0, 0.418239, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_iiaic"]
+resource_name = "screenshake"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:h_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.1, 0.1, 0.0, -0.1, 0.1, 0.0, -0.1, 0.1, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_116jj"]
+_data = {
+"screenshake": SubResource("Animation_iiaic")
+}
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53517, 0)
+collision_mask = 5
+script = ExtResource("1_ku8ux")
+Stats = SubResource("Resource_5fhkh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.161397, 0)
+shape = SubResource("CapsuleShape3D_hf6lr")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.908974, 0.416852, 0, -0.416852, 0.908974, -0.0158501, 0, 0.0683136)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_ggo5k")
+animation = &"Idle"
+frame_progress = 0.64943
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999998, -0.000872664, 0.0015115, 0, 0.866025, 0.5, -0.00174533, -0.499999, 0.866024, 0, 1.5, 3.75)
+v_offset = 0.5
+current = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Life" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0473238, 0)
+shaded = true
+texture_filter = 0
+texture = SubResource("ViewportTexture_egohb")
+
+[node name="SubViewport" type="SubViewport" parent="Life"]
+transparent_bg = true
+size = Vector2i(64, 64)
+
+[node name="EntityStats" parent="Life/SubViewport" instance=ExtResource("4_27sjq")]
+
+[node name="Inventory" type="CanvasLayer" parent="."]
+script = ExtResource("4_bored")
+recipeBook = SubResource("Resource_cmvo1")
+
+[node name="ToDoList" type="MarginContainer" parent="Inventory"]
+custom_minimum_size = Vector2(172, 172)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -204.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="Body" type="VBoxContainer" parent="Inventory/ToDoList"]
+layout_mode = 2
+
+[node name="TODO1" type="HBoxContainer" parent="Inventory/ToDoList/Body"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Inventory/ToDoList/Body/TODO1"]
+layout_mode = 2
+texture = ExtResource("10_t3vro")
+stretch_mode = 3
+
+[node name="PinBox" parent="Inventory/ToDoList/Body/TODO1" instance=ExtResource("11_yk0t8")]
+layout_mode = 2
+key = "One"
+
+[node name="TODO2" type="HBoxContainer" parent="Inventory/ToDoList/Body"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Inventory/ToDoList/Body/TODO2"]
+layout_mode = 2
+texture = ExtResource("13_s2qme")
+stretch_mode = 3
+
+[node name="PinBox" parent="Inventory/ToDoList/Body/TODO2" instance=ExtResource("11_yk0t8")]
+layout_mode = 2
+key = "Two"
+
+[node name="TODO3" type="HBoxContainer" parent="Inventory/ToDoList/Body"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Inventory/ToDoList/Body/TODO3"]
+layout_mode = 2
+texture = ExtResource("14_atvqu")
+stretch_mode = 3
+
+[node name="PinBox" parent="Inventory/ToDoList/Body/TODO3" instance=ExtResource("11_yk0t8")]
+layout_mode = 2
+key = "Three"
+
+[node name="TODO4" type="HBoxContainer" parent="Inventory/ToDoList/Body"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Inventory/ToDoList/Body/TODO4"]
+layout_mode = 2
+texture = ExtResource("15_13f7p")
+stretch_mode = 3
+
+[node name="PinBox" parent="Inventory/ToDoList/Body/TODO4" instance=ExtResource("11_yk0t8")]
+layout_mode = 2
+key = "Four"
+
+[node name="Margin" type="MarginContainer" parent="Inventory"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_d781l")
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_top = 256
+theme_override_constants/margin_right = 256
+theme_override_constants/margin_bottom = 200
+
+[node name="HSep" type="HBoxContainer" parent="Inventory/Margin"]
+layout_mode = 2
+
+[node name="Inv" type="VBoxContainer" parent="Inventory/Margin/HSep"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TabContainer" type="TabContainer" parent="Inventory/Margin/HSep/Inv"]
+layout_mode = 2
+size_flags_vertical = 3
+tab_alignment = 1
+
+[node name="Inventory" type="VBoxContainer" parent="Inventory/Margin/HSep/Inv/TabContainer"]
+layout_mode = 2
+
+[node name="InvList" type="ItemList" parent="Inventory/Margin/HSep/Inv/TabContainer/Inventory"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+allow_rmb_select = true
+item_count = 1
+item_0/text = "Sword"
+item_0/icon = ExtResource("7_efttr")
+
+[node name="Crafts" type="MarginContainer" parent="Inventory/Margin/HSep/Inv/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="CraftList" type="ItemList" parent="Inventory/Margin/HSep/Inv/TabContainer/Crafts"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+item_count = 1
+item_0/text = "Sword"
+item_0/icon = ExtResource("7_efttr")
+
+[node name="Infos" type="VBoxContainer" parent="Inventory/Margin/HSep"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Inventory/Margin/HSep/Infos"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Inventory/Margin/HSep/Infos/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Inventory/Margin/HSep/Infos/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ITEM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/Margin/HSep/Infos"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Inventory/Margin/HSep/Infos/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+alignment = 1
+
+[node name="EQUIPE" type="Button" parent="Inventory/Margin/HSep/Infos/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_n3g1n")
+text = "EQUIP"
+
+[node name="UNEQUIPE" type="Button" parent="Inventory/Margin/HSep/Infos/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_n3g1n")
+text = "UNEQUIP"
+
+[node name="Label" type="Label" parent="Inventory/Margin/HSep/Infos/VBoxContainer"]
+layout_mode = 2
+text = "---"
+horizontal_alignment = 1
+
+[node name="Label2" type="MarginContainer" parent="Inventory/Margin/HSep/Infos/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Inventory/Margin/HSep/Infos/VBoxContainer/Label2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Inventory/Margin/HSep/Infos/VBoxContainer/Label2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "UPGRADES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Recipes" type="VBoxContainer" parent="Inventory/Margin/HSep/Infos/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="RecipeNode" parent="Inventory/Margin/HSep/Infos/VBoxContainer/Recipes" instance=ExtResource("17_2jifu")]
+layout_mode = 2
+
+[node name="RecipeNode2" parent="Inventory/Margin/HSep/Infos/VBoxContainer/Recipes" instance=ExtResource("17_2jifu")]
+layout_mode = 2
+
+[node name="RecipeBox" type="VBoxContainer" parent="Inventory/Margin/HSep"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Inventory/Margin/HSep/RecipeBox"]
+layout_mode = 2
+text = "CRAFTS"
+horizontal_alignment = 1
+
+[node name="RecipeNode" parent="Inventory/Margin/HSep/RecipeBox" instance=ExtResource("17_2jifu")]
+layout_mode = 2
+
+[node name="Craft" type="AudioStreamPlayer" parent="Inventory"]
+stream = ExtResource("25_ijdgi")
+
+[node name="Cinematic" type="CanvasLayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cinematic"]
+libraries = {
+"": SubResource("AnimationLibrary_kg0qm")
+}
+
+[node name="Vignette" type="ColorRect" parent="Cinematic"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Equiped" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
+visible = false
+
+[node name="PhysicBubble" parent="." instance=ExtResource("19_b5dit")]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GrassFootsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_7xpam")
+autoplay = true
+
+[node name="StoneFootsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_off7s")
+autoplay = true
+
+[node name="SandFootsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_jgisj")
+autoplay = true
+
+[node name="WaterFootsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_e0mvs")
+
+[node name="GrassyStoneFootsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_7xpam")
+autoplay = true
+
+[node name="SwingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_1olkk")
+volume_db = -20.0
+
+[node name="Ambient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_jju4s")
+volume_db = -30.0
+autoplay = true
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+current = true
+
+[node name="WetDetector" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WetDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.137852, 0)
+shape = SubResource("SphereShape3D_hy67e")
+
+[node name="Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.186253)
+visible = false
+light_color = Color(1, 0.694118, 0.419608, 1)
+light_energy = 3.0
+light_size = 0.1
+omni_range = 10.0
+omni_attenuation = 0.0883886
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00902145, -0.193804, 0.0787054)
+amount = 100
+lifetime = 0.25
+mesh = SubResource("QuadMesh_pr1aj")
+emission_shape = 1
+emission_sphere_radius = 0.05
+gravity = Vector3(0, 0, 0)
+scale_amount_min = 0.5
+scale_amount_max = 1.25
+scale_amount_curve = SubResource("Curve_8xhdn")
+color_ramp = SubResource("Gradient_0hgmr")
+hue_variation_min = -0.13
+hue_variation_max = 0.44
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_116jj")
+}
+
+[connection signal="tab_selected" from="Inventory/Margin/HSep/Inv/TabContainer" to="Inventory" method="_on_tab_bar_tab_clicked"]
+[connection signal="item_clicked" from="Inventory/Margin/HSep/Inv/TabContainer/Inventory/InvList" to="Inventory" method="_on_inv_list_item_clicked"]
+[connection signal="item_selected" from="Inventory/Margin/HSep/Inv/TabContainer/Crafts/CraftList" to="Inventory" method="_on_craft_list_item_selected"]
+[connection signal="pressed" from="Inventory/Margin/HSep/Infos/VBoxContainer/HBoxContainer/EQUIPE" to="Inventory" method="_on_equipe_pressed"]
+[connection signal="pressed" from="Inventory/Margin/HSep/Infos/VBoxContainer/HBoxContainer/UNEQUIPE" to="Inventory" method="_on_unequipe_pressed"]
+[connection signal="recipeClicked" from="Inventory/Margin/HSep/Infos/VBoxContainer/Recipes/RecipeNode" to="Inventory" method="_on_recipe_node_recipe_clicked"]
+[connection signal="recipeClicked" from="Inventory/Margin/HSep/Infos/VBoxContainer/Recipes/RecipeNode2" to="Inventory" method="_on_recipe_node_recipe_clicked"]
+[connection signal="recipeClicked" from="Inventory/Margin/HSep/RecipeBox/RecipeNode" to="Inventory" method="_on_recipe_node_recipe_clicked"]
+[connection signal="animation_finished" from="Cinematic/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="WetDetector" to="." method="_on_wet_detector_area_entered"]
+[connection signal="area_exited" from="WetDetector" to="." method="_on_wet_detector_area_exited"]

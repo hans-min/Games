@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://dkb44hgn3ldco"]
+
+[ext_resource type="Texture2D" uid="uid://d4a1qam5f5y20" path="res://UI/Icons/Weapons/WoodSword/WoodSword2.png" id="1_kkmxg"]
+[ext_resource type="Script" path="res://Resources/Item/BaseResource/Item.gd" id="2_dm8h3"]
+[ext_resource type="Resource" uid="uid://ce35rq5iitjg5" path="res://Resources/Recipes/Weapons/WoodSword3.tres" id="3_vykri"]
+[ext_resource type="Resource" uid="uid://c5bhu4vn33sp2" path="res://Resources/Recipes/Weapons/WoodSword4.tres" id="4_6fpem"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_dm8h3")
+itemName = "Wooder Sword"
+type = "Weapon"
+icon = ExtResource("1_kkmxg")
+stack = 1
+canBeEquiped = true
+description = "Harder. Faster. Wooder. Sworder. "
+objectScenePath = "res://Entities/Weapons/WoodSword2.tscn"
+upgrades = Array[Resource("res://Resources/Recipes/BaseResource/Recipe.gd")]([ExtResource("3_vykri"), ExtResource("4_6fpem")])

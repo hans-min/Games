@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3 uid="uid://bgju6am7x380y"]
+
+[ext_resource type="Resource" uid="uid://btnu1ct6ct83h" path="res://Resources/Item/Lootables/Wood.tres" id="1_xa8jh"]
+[ext_resource type="Resource" uid="uid://celm4ww0pyl5g" path="res://Resources/Item/Tools/WoodPickaxe/WoodPickaxe.tres" id="2_211my"]
+[ext_resource type="Script" path="res://Resources/ItemHolder/ItemHolder.gd" id="2_hbvxc"]
+[ext_resource type="Script" path="res://Resources/Recipes/BaseResource/Recipe.gd" id="3_i3pmd"]
+
+[sub_resource type="Resource" id="Resource_uocpt"]
+script = ExtResource("2_hbvxc")
+item = ExtResource("1_xa8jh")
+quantity = 10
+
+[sub_resource type="Resource" id="Resource_ko2s7"]
+script = ExtResource("2_hbvxc")
+item = ExtResource("2_211my")
+quantity = 1
+
+[resource]
+script = ExtResource("3_i3pmd")
+inputItems = Array[ExtResource("2_hbvxc")]([SubResource("Resource_uocpt")])
+outputItem = SubResource("Resource_ko2s7")

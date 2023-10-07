@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="GenFile" load_steps=17 format=3 uid="uid://c1eklynr0u7a0"]
+
+[ext_resource type="MeshLibrary" uid="uid://d3d2k04isri4g" path="res://Gridmaps/Defaut/GridmapDefault.tres" id="1_7w8gm"]
+[ext_resource type="Environment" uid="uid://coxoqohmdgfdh" path="res://Resources/Environments/BaseWorldEnvironment.tres" id="1_xke0a"]
+[ext_resource type="Script" path="res://Resources/GenFile/GenFile.gd" id="2_5wnhf"]
+[ext_resource type="PackedScene" uid="uid://yib7ain7e5ai" path="res://Entities/Wolf/Wolf3D/wolf3D.tscn" id="3_bn4dn"]
+[ext_resource type="Material" uid="uid://cbpphk71bk4uw" path="res://Shaders/Water.tres" id="3_dkdu2"]
+[ext_resource type="Script" path="res://Resources/Spawnable/Spawnable.gd" id="4_1kq1h"]
+[ext_resource type="PackedScene" uid="uid://b02bwmap1hppy" path="res://Gridmaps/Defaut/Tree/tree.tscn" id="5_bof0c"]
+[ext_resource type="PackedScene" uid="uid://dt60b4v5kmapn" path="res://Gridmaps/Defaut/Debris/debris.tscn" id="6_6olue"]
+[ext_resource type="PackedScene" uid="uid://ewnpnhyk1l4y" path="res://Gridmaps/Defaut/Bush/bush.tscn" id="7_1p7xj"]
+
+[sub_resource type="Gradient" id="Gradient_3emgu"]
+offsets = PackedFloat32Array(0.152381, 0.415873, 0.84127, 1)
+colors = PackedColorArray(0.313726, 0.521569, 1, 0.956863, 0.332892, 0.473386, 0.195277, 1, 0.676636, 0.639085, 0.501151, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gpfty"]
+frequency = 0.0309
+fractal_octaves = 4
+fractal_lacunarity = 1.305
+fractal_gain = 1.149
+fractal_weighted_strength = 0.27
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o4nvu"]
+resource_local_to_scene = true
+color_ramp = SubResource("Gradient_3emgu")
+noise = SubResource("FastNoiseLite_gpfty")
+
+[sub_resource type="Resource" id="Resource_vecb7"]
+script = ExtResource("4_1kq1h")
+scene = ExtResource("3_bn4dn")
+quantity = 25
+
+[sub_resource type="Resource" id="Resource_aheyn"]
+script = ExtResource("4_1kq1h")
+scene = ExtResource("5_bof0c")
+quantity = 200
+
+[sub_resource type="Resource" id="Resource_w6x8s"]
+script = ExtResource("4_1kq1h")
+scene = ExtResource("6_6olue")
+quantity = 10
+
+[sub_resource type="Resource" id="Resource_gn121"]
+script = ExtResource("4_1kq1h")
+scene = ExtResource("7_1p7xj")
+quantity = 500
+
+[resource]
+resource_name = "BaseWorld"
+script = ExtResource("2_5wnhf")
+meshlib = ExtResource("1_7w8gm")
+isWater = true
+waterShader = ExtResource("3_dkdu2")
+waterHeight = 1.35
+isWaterBorder = true
+waterBorderBloc = 4
+noiseMap = SubResource("NoiseTexture2D_o4nvu")
+layers = Array[int]([4, 0, 2])
+spawnableAI = Array[ExtResource("4_1kq1h")]([SubResource("Resource_vecb7")])
+spawnableOBJ = Array[ExtResource("4_1kq1h")]([SubResource("Resource_aheyn"), SubResource("Resource_w6x8s"), SubResource("Resource_gn121")])
+environment = ExtResource("1_xke0a")

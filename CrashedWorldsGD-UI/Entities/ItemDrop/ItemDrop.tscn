@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5i2tqrb6vp5k"]
+
+[ext_resource type="Script" path="res://Entities/ItemDrop/ItemDrop.gd" id="1_nscns"]
+[ext_resource type="Resource" uid="uid://ddtvl6r7prxgf" path="res://Resources/ItemHolder/ItemHolder.tres" id="2_5exus"]
+[ext_resource type="AudioStream" uid="uid://dmha4y0lw87yo" path="res://Sound/PickUp.mp3" id="3_ed8gq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b0phs"]
+size = Vector3(0.1, 0.3, 0.1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5bm7q"]
+
+[node name="ItemDrop" type="RigidBody3D"]
+collision_layer = 5
+can_sleep = false
+lock_rotation = true
+script = ExtResource("1_nscns")
+item = ExtResource("2_5exus")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_b0phs")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shaded = true
+alpha_cut = 1
+
+[node name="Detect" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detect"]
+shape = SubResource("SphereShape3D_5bm7q")
+
+[node name="PickUpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ed8gq")
+bus = &"PickUp"
+
+[connection signal="body_entered" from="Detect" to="." method="_on_detect_body_entered"]

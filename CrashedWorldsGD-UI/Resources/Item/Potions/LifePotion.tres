@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ckhh7q26g40u0"]
+
+[ext_resource type="Texture2D" uid="uid://e3txqiidenu0" path="res://UI/Icons/Potions/ArmorPotion.png" id="1_a37oq"]
+[ext_resource type="Script" path="res://Resources/Item/BaseResource/Item.gd" id="2_lwe57"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_lwe57")
+itemName = "Life Potion"
+type = ""
+icon = ExtResource("1_a37oq")
+stack = 4
+canBeEquiped = true
+description = "The more it smells, the better it is."
+objectScenePath = "res://Entities/Potions/Potion.tscn"
+upgrades = Array[Resource("res://Resources/Recipes/BaseResource/Recipe.gd")]([])

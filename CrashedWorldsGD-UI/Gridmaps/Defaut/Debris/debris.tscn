@@ -1,0 +1,95 @@
+[gd_scene load_steps=15 format=3 uid="uid://dt60b4v5kmapn"]
+
+[ext_resource type="PackedScene" uid="uid://clgm2nacjc8to" path="res://Gridmaps/Defaut/Debris/Debris.glb" id="1_v83lt"]
+[ext_resource type="Script" path="res://Gridmaps/Defaut/Debris/debris.gd" id="2_30x3t"]
+[ext_resource type="Script" path="res://Resources/Lootable/Lootable.gd" id="3_jsque"]
+[ext_resource type="Resource" uid="uid://draqe6tm7hpkd" path="res://Resources/Item/Lootables/SpaceFluid.tres" id="3_s7gel"]
+[ext_resource type="Script" path="res://Resources/Lootable/Loot.gd" id="4_v85ao"]
+[ext_resource type="AudioStream" uid="uid://byqdfjv1ivyxo" path="res://Sound/Fire.mp3" id="6_roqmh"]
+
+[sub_resource type="Resource" id="Resource_6yong"]
+script = ExtResource("4_v85ao")
+item = ExtResource("3_s7gel")
+percentage = 100
+
+[sub_resource type="Resource" id="Resource_4n1qv"]
+script = ExtResource("3_jsque")
+loots = Array[ExtResource("4_v85ao")]([SubResource("Resource_6yong")])
+minNumberLoot = 1
+maxNumberLoot = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pt8ed"]
+size = Vector3(1.35473, 1, 1.48044)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5hosq"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1.5, 1.25, 1.25, 1)
+texture_filter = 2
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_6ytko"]
+material = SubResource("StandardMaterial3D_5hosq")
+
+[sub_resource type="Curve" id="Curve_pa65g"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0656934, 1), -0.196651, -0.196651, 0, 0, Vector2(0.894161, 0.509091), 0.0655506, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_n13up"]
+offsets = PackedFloat32Array(0, 0.147541, 0.407407, 0.843621)
+colors = PackedColorArray(0.0711889, 0.621442, 0.7, 1, 0.0892046, 0.276098, 0.554688, 1, 0.00917119, 0, 0.105469, 1, 0, 0, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kccw7"]
+radius = 15.3601
+
+[node name="Debris" groups=["Lootable"] instance=ExtResource("1_v83lt")]
+script = ExtResource("2_30x3t")
+lootable = SubResource("Resource_4n1qv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146958, 0.567128, -0.0907062)
+shape = SubResource("BoxShape3D_pt8ed")
+
+[node name="Cube" parent="." index="1"]
+transform = Transform3D(0.338971, 0, 0, 0, 0.338971, 0, 0, 0, 0.338971, 0.461655, 0.296294, -0.525968)
+
+[node name="Cylinder" parent="." index="11"]
+transform = Transform3D(0.812419, 0.458711, 0.359945, -0.581167, 0.587156, 0.563465, 0.0471241, -0.666958, 0.743604, 0, 0.593971, 0)
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.832204, -0.60177)
+transparency = 0.06
+cast_shadow = 0
+amount = 20
+lifetime = 1.5
+draw_order = 2
+mesh = SubResource("QuadMesh_6ytko")
+direction = Vector3(0, 1, 0)
+spread = 33.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.75
+initial_velocity_max = 1.25
+angle_max = 180.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_pa65g")
+color = Color(0.905882, 1, 0.74902, 1)
+color_ramp = SubResource("Gradient_n13up")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="13"]
+stream = ExtResource("6_roqmh")
+autoplay = true
+max_distance = 20.0
+
+[node name="Area3D" type="Area3D" parent="." index="14"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("SphereShape3D_kccw7")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

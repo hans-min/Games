@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3 uid="uid://3t1ms16egh3d"]
+
+[ext_resource type="Resource" uid="uid://b5ctbtlftbmra" path="res://Resources/Item/Lootables/Berries/BlueBerry.tres" id="1_h3pkj"]
+[ext_resource type="Script" path="res://Resources/ItemHolder/ItemHolder.gd" id="2_41ffo"]
+[ext_resource type="Resource" uid="uid://cd3776npj4oim" path="res://Resources/Item/Potions/JumpPotion.tres" id="3_iqw0t"]
+[ext_resource type="Script" path="res://Resources/Recipes/BaseResource/Recipe.gd" id="4_qky0s"]
+
+[sub_resource type="Resource" id="Resource_ip0na"]
+script = ExtResource("2_41ffo")
+item = ExtResource("1_h3pkj")
+quantity = 2
+
+[sub_resource type="Resource" id="Resource_5nae2"]
+script = ExtResource("2_41ffo")
+item = ExtResource("3_iqw0t")
+quantity = 1
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("4_qky0s")
+inputItems = Array[ExtResource("2_41ffo")]([SubResource("Resource_ip0na")])
+outputItem = SubResource("Resource_5nae2")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b36mp3wm1fqgv"]
+
+[ext_resource type="Texture2D" uid="uid://jp114vifqhqr" path="res://UI/Icons/Potions/TeleportPotion.png" id="1_xog8b"]
+[ext_resource type="Script" path="res://Resources/Item/BaseResource/Item.gd" id="2_wplj3"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_wplj3")
+itemName = "Teleport Potion"
+type = ""
+icon = ExtResource("1_xog8b")
+stack = 4
+canBeEquiped = true
+description = "GET IN THE FUCKING CAR MORTY"
+objectScenePath = "res://Entities/Potions/Potion.tscn"
+upgrades = Array[Resource("res://Resources/Recipes/BaseResource/Recipe.gd")]([])

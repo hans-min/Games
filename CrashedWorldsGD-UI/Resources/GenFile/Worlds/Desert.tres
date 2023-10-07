@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="GenFile" load_steps=16 format=3 uid="uid://c6aeamlqqysvf"]
+
+[ext_resource type="Environment" uid="uid://hlddlkmhxv7o" path="res://Resources/Environments/DesertEnvironment.tres" id="1_rajbq"]
+[ext_resource type="MeshLibrary" uid="uid://d3d2k04isri4g" path="res://Gridmaps/Defaut/GridmapDefault.tres" id="1_sg5g6"]
+[ext_resource type="Script" path="res://Resources/GenFile/GenFile.gd" id="2_8wekt"]
+[ext_resource type="Material" uid="uid://cbpphk71bk4uw" path="res://Shaders/Water.tres" id="3_6ym3d"]
+[ext_resource type="PackedScene" uid="uid://ewnpnhyk1l4y" path="res://Gridmaps/Defaut/Bush/bush.tscn" id="3_hxjel"]
+[ext_resource type="PackedScene" uid="uid://yib7ain7e5ai" path="res://Entities/Wolf/Wolf3D/wolf3D.tscn" id="3_vam01"]
+[ext_resource type="Script" path="res://Resources/Spawnable/Spawnable.gd" id="4_ru2nh"]
+[ext_resource type="PackedScene" uid="uid://dt60b4v5kmapn" path="res://Gridmaps/Defaut/Debris/debris.tscn" id="7_qqtw8"]
+[ext_resource type="PackedScene" uid="uid://g2tgq7o1l6vq" path="res://Entities/Cactus/cactus.tscn" id="8_qar0y"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yll8f"]
+fractal_type = 2
+fractal_lacunarity = 1.985
+fractal_gain = 0.37
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d0vhu"]
+noise = SubResource("FastNoiseLite_yll8f")
+
+[sub_resource type="Resource" id="Resource_np3ic"]
+script = ExtResource("4_ru2nh")
+scene = ExtResource("3_vam01")
+quantity = 25
+
+[sub_resource type="Resource" id="Resource_sryju"]
+script = ExtResource("4_ru2nh")
+scene = ExtResource("3_hxjel")
+quantity = 50
+
+[sub_resource type="Resource" id="Resource_oytik"]
+script = ExtResource("4_ru2nh")
+scene = ExtResource("7_qqtw8")
+quantity = 10
+
+[sub_resource type="Resource" id="Resource_6wnqi"]
+script = ExtResource("4_ru2nh")
+scene = ExtResource("8_qar0y")
+quantity = 300
+
+[resource]
+resource_name = "Desert"
+script = ExtResource("2_8wekt")
+meshlib = ExtResource("1_sg5g6")
+isWater = false
+waterShader = ExtResource("3_6ym3d")
+waterHeight = 0.0
+isWaterBorder = false
+waterBorderBloc = 0
+noiseMap = SubResource("NoiseTexture2D_d0vhu")
+layers = Array[int]([4, 4, 4, 4, 4, 4, 4])
+spawnableAI = Array[ExtResource("4_ru2nh")]([SubResource("Resource_np3ic")])
+spawnableOBJ = Array[ExtResource("4_ru2nh")]([SubResource("Resource_sryju"), SubResource("Resource_oytik"), SubResource("Resource_6wnqi")])
+environment = ExtResource("1_rajbq")

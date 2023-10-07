@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3 uid="uid://e4rhwt6140cy"]
+
+[ext_resource type="Resource" uid="uid://ctlg5fv44ohcc" path="res://Resources/Item/Lootables/Berries/WhiteBerry.tres" id="1_ibsa3"]
+[ext_resource type="Script" path="res://Resources/ItemHolder/ItemHolder.gd" id="2_sxx6b"]
+[ext_resource type="Resource" uid="uid://b36mp3wm1fqgv" path="res://Resources/Item/Potions/TeleportPotion.tres" id="3_2qqwk"]
+[ext_resource type="Script" path="res://Resources/Recipes/BaseResource/Recipe.gd" id="4_rw40x"]
+
+[sub_resource type="Resource" id="Resource_7qigy"]
+script = ExtResource("2_sxx6b")
+item = ExtResource("1_ibsa3")
+quantity = 2
+
+[sub_resource type="Resource" id="Resource_l2je5"]
+script = ExtResource("2_sxx6b")
+item = ExtResource("3_2qqwk")
+quantity = 1
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("4_rw40x")
+inputItems = Array[ExtResource("2_sxx6b")]([SubResource("Resource_7qigy")])
+outputItem = SubResource("Resource_l2je5")

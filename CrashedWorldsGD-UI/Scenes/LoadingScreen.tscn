@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=3 uid="uid://bnygeehxyovjy"]
+
+[ext_resource type="Script" path="res://Scenes/LoadingScreen.gd" id="1_eb8sp"]
+[ext_resource type="Texture2D" uid="uid://cnfcobak8gkhn" path="res://Entities/Player/playerRun-sheet.png" id="1_oa7fh"]
+[ext_resource type="FontFile" uid="uid://dg7sn1woyt4ah" path="res://Fonts/visitor1.ttf" id="2_vw71w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgica"]
+atlas = ExtResource("1_oa7fh")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjmkw"]
+atlas = ExtResource("1_oa7fh")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8a7m"]
+atlas = ExtResource("1_oa7fh")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bunuk"]
+atlas = ExtResource("1_oa7fh")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj1tv"]
+atlas = ExtResource("1_oa7fh")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paevr"]
+atlas = ExtResource("1_oa7fh")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5fob"]
+atlas = ExtResource("1_oa7fh")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drixl"]
+atlas = ExtResource("1_oa7fh")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x6qw5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgica")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjmkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8a7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bunuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj1tv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paevr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5fob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drixl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Loading" type="CanvasLayer"]
+script = ExtResource("1_eb8sp")
+
+[node name="Control2" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Control2"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control2/MarginContainer"]
+layout_mode = 2
+color = Color(0.317647, 0.509804, 0.415686, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Control2/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="Control2/MarginContainer/CenterContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_vw71w")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[wave amp=50 freq=5]CRASHING ONTO WORLD..."
+scroll_active = false
+
+[node name="Control" type="MarginContainer" parent="Control2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="Control2/Control"]
+sprite_frames = SubResource("SpriteFrames_x6qw5")
+centered = false

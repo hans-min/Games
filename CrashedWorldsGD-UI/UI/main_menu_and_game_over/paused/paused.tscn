@@ -1,0 +1,154 @@
+[gd_scene load_steps=8 format=3 uid="uid://cko02oljhiby"]
+
+[ext_resource type="Script" path="res://UI/main_menu_and_game_over/paused/paused.gd" id="1_3v2tm"]
+[ext_resource type="FontFile" uid="uid://dg7sn1woyt4ah" path="res://Fonts/visitor1.ttf" id="1_r5m7q"]
+[ext_resource type="Script" path="res://UI/main_menu_and_game_over/paused/options.gd" id="2_64p0f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmso0"]
+bg_color = Color(0.321569, 0.356863, 0.486275, 1)
+skew = Vector2(0.465, 0)
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46gnx"]
+bg_color = Color(0.160784, 0.184314, 0.262745, 1)
+skew = Vector2(0.465, 0)
+corner_detail = 20
+shadow_size = 1
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8x3mo"]
+bg_color = Color(0.301961, 0.521569, 0.768627, 1)
+skew = Vector2(0.465, 0)
+corner_detail = 20
+shadow_color = Color(0.847059, 0.847059, 0.847059, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="Theme" id="Theme_4yob2"]
+default_font = ExtResource("1_r5m7q")
+default_font_size = 24
+Button/styles/disabled = SubResource("StyleBoxFlat_kmso0")
+Button/styles/focus = SubResource("StyleBoxFlat_kmso0")
+Button/styles/hover = SubResource("StyleBoxFlat_46gnx")
+Button/styles/normal = SubResource("StyleBoxFlat_kmso0")
+Button/styles/pressed = SubResource("StyleBoxFlat_8x3mo")
+Label/fonts/font = ExtResource("1_r5m7q")
+
+[node name="Paused" type="MarginContainer"]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_4yob2")
+theme_override_constants/margin_top = 0
+script = ExtResource("1_3v2tm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0, 0, 0.160784, 0.356863)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 65
+theme_override_constants/margin_bottom = 65
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 170
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Instructions" type="Label" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Press P to resume."
+horizontal_alignment = 1
+
+[node name="PauseOptions" type="VBoxContainer" parent="MarginContainer/VBoxContainer2" node_paths=PackedStringArray("shortcut_context")]
+layout_mode = 2
+size_flags_vertical = 4
+shortcut_context = NodePath("../VBoxContainer2/Resume")
+theme_override_constants/separation = 100
+alignment = 1
+script = ExtResource("2_64p0f")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/PauseOptions"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/PauseOptions/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/PauseOptions/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Main volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundSlider" type="HSlider" parent="MarginContainer/VBoxContainer2/PauseOptions/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Change music volume
+"
+max_value = 25.0
+value = 10.0
+ticks_on_borders = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/PauseOptions/MarginContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer2/PauseOptions/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Music volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer2/PauseOptions/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Change music volume
+"
+min_value = -1.0
+max_value = 20.0
+ticks_on_borders = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 20
+
+[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer2"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Resume"
+
+[node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer2"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer2"]
+visible = false
+layout_mode = 2
+text = "Quit"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer2/PauseOptions/MarginContainer/HBoxContainer/SoundSlider" to="." method="_on_sound_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer2/PauseOptions/MarginContainer/HBoxContainer2/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer2/Resume" to="." method="_resume"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer2/MainMenu" to="MarginContainer/VBoxContainer2/PauseOptions" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer2/Quit" to="MarginContainer/VBoxContainer2/PauseOptions" method="_on_quit_pressed"]

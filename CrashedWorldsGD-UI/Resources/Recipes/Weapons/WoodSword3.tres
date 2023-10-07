@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://ce35rq5iitjg5"]
+
+[ext_resource type="Resource" uid="uid://btnu1ct6ct83h" path="res://Resources/Item/Lootables/Wood.tres" id="1_b50cc"]
+[ext_resource type="Script" path="res://Resources/ItemHolder/ItemHolder.gd" id="2_k2ksa"]
+[ext_resource type="Resource" uid="uid://brweaxj1dm7fl" path="res://Resources/Item/Lootables/Berries/RedBerry.tres" id="3_wiw4v"]
+[ext_resource type="Resource" uid="uid://baxt34ur46jaq" path="res://Resources/Item/Weapons/WoodSword/WoodSword3.tres" id="4_jnq6r"]
+[ext_resource type="Script" path="res://Resources/Recipes/BaseResource/Recipe.gd" id="5_p7oh0"]
+
+[sub_resource type="Resource" id="Resource_w6wrh"]
+script = ExtResource("2_k2ksa")
+item = ExtResource("1_b50cc")
+quantity = 15
+
+[sub_resource type="Resource" id="Resource_na8lj"]
+script = ExtResource("2_k2ksa")
+item = ExtResource("3_wiw4v")
+quantity = 10
+
+[sub_resource type="Resource" id="Resource_8a54k"]
+script = ExtResource("2_k2ksa")
+item = ExtResource("4_jnq6r")
+quantity = 1
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("5_p7oh0")
+inputItems = Array[ExtResource("2_k2ksa")]([SubResource("Resource_w6wrh"), SubResource("Resource_na8lj")])
+outputItem = SubResource("Resource_8a54k")

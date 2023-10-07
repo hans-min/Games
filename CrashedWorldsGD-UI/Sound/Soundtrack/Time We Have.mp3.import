@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bjr81p18rdadh"
+path="res://.godot/imported/Time We Have.mp3-36eff99499d5bee97cee0256c91bb902.mp3str"
+
+[deps]
+
+source_file="res://Sound/Soundtrack/Time We Have.mp3"
+dest_files=["res://.godot/imported/Time We Have.mp3-36eff99499d5bee97cee0256c91bb902.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

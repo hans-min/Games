@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Spawnable" load_steps=2 format=3 uid="uid://dadj6fgt08tgv"]
+
+[ext_resource type="Script" path="res://Resources/Spawnable/Spawnable.gd" id="1_qkstw"]
+
+[resource]
+script = ExtResource("1_qkstw")
+quantity = 0
