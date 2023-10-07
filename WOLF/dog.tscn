@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://wbg8mqhvhjxd"]
+
+[ext_resource type="Texture2D" uid="uid://bp1hlqysr7bf1" path="res://dog anim.png" id="1_boavl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emo01"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0ggv"]
+atlas = ExtResource("1_boavl")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypffk"]
+atlas = ExtResource("1_boavl")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2e7wt"]
+atlas = ExtResource("1_boavl")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4cp5"]
+atlas = ExtResource("1_boavl")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc1ga"]
+atlas = ExtResource("1_boavl")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aofis"]
+atlas = ExtResource("1_boavl")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e8i5"]
+atlas = ExtResource("1_boavl")
+region = Rect2(672, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0sxc"]
+atlas = ExtResource("1_boavl")
+region = Rect2(768, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1erc"]
+atlas = ExtResource("1_boavl")
+region = Rect2(864, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q66lh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0ggv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypffk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2e7wt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4cp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc1ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aofis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e8i5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0sxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1erc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Dog" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_emo01")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+sprite_frames = SubResource("SpriteFrames_q66lh")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0995162
