@@ -1,0 +1,224 @@
+Using pre-set license
+Built from '2021.3/staging' branch; Version is '2021.3.11f1 (0a5ca18544bf) revision 679073'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'en' Physical Memory: 14188 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.3.11f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker3
+-projectPath
+C:/Users/kaito/Desktop/block_building-master/block_building-master
+-logFile
+Logs/AssetImportWorker3.log
+-srvPort
+60111
+Successfully changed project path to: C:/Users/kaito/Desktop/block_building-master/block_building-master
+C:/Users/kaito/Desktop/block_building-master/block_building-master
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 55.17 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.11f1 (0a5ca18544bf)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/kaito/Desktop/block_building-master/block_building-master/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3060 Laptop GPU (ID=0x2560)
+    Vendor:   NVIDIA
+    VRAM:     6023 MB
+    Driver:   31.0.15.1659
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56920
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.006775 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 38.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.514 seconds
+Domain Reload Profiling:
+	ReloadAssembly (514ms)
+		BeginReloadAssembly (67ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (351ms)
+			LoadAssemblies (64ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (83ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (21ms)
+			SetupLoadedEditorAssemblies (202ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (39ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (117ms)
+				ProcessInitializeOnLoadMethodAttributes (38ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.004645 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Package Manager log level set to [2]
+Mono: successfully reloaded assembly
+- Completed reload, in  0.852 seconds
+Domain Reload Profiling:
+	ReloadAssembly (853ms)
+		BeginReloadAssembly (108ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (647ms)
+			LoadAssemblies (77ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (135ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (371ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (61ms)
+				ProcessInitializeOnLoadAttributes (179ms)
+				ProcessInitializeOnLoadMethodAttributes (116ms)
+				AfterProcessingInitializeOnLoad (9ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 1.13 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2431 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 60 unused Assets / (57.2 KB). Loaded Objects now: 2868.
+Memory consumption went from 93.0 MB to 92.9 MB.
+Total: 6.771600 ms (FindLiveObjects: 0.336100 ms CreateObjectMapping: 0.098200 ms MarkObjects: 6.225800 ms  DeleteObjects: 0.110300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 33541.359413 seconds.
+  path: Assets/FBX format/tile_spawn.fbx
+  artifactKey: Guid(d584b6db8297edb4db204f5a97b46eb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FBX format/tile_spawn.fbx using Guid(d584b6db8297edb4db204f5a97b46eb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd019467d1babfcb9e4b96b71d3e660a0') in 0.149078 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 59.758523 seconds.
+  path: Assets/FBX format/towerRound_roofB.fbx
+  artifactKey: Guid(dac56c8a3082f744e83757e1de6bfe9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FBX format/towerRound_roofB.fbx using Guid(dac56c8a3082f744e83757e1de6bfe9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abbf1ee164a5d56a53deff7f9c7da89a') in 0.036457 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/FBX format/towerRound_sampleA.fbx
+  artifactKey: Guid(01b785a16de702c4b8f8172e96ab1292) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FBX format/towerRound_sampleA.fbx using Guid(01b785a16de702c4b8f8172e96ab1292) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5dbf2ad7aa3d39d7d379b96a3c7c118') in 0.059122 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/FBX format/towerRound_sampleF.fbx
+  artifactKey: Guid(a77a82bcaf24a5c44bbacc9e620466cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FBX format/towerRound_sampleF.fbx using Guid(a77a82bcaf24a5c44bbacc9e620466cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4454b0bc8468ce4958600c78401a290') in 0.054704 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/FBX format/towerRound_sampleD.fbx
+  artifactKey: Guid(8a2d7cffceeb4fe459ea20fe54cf6831) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FBX format/towerRound_sampleD.fbx using Guid(8a2d7cffceeb4fe459ea20fe54cf6831) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f0458ddcb69936a37dd31c8f6c6996b') in 0.055568 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 58.544722 seconds.
+  path: Assets/FBX format/towerSquare_bottomB.fbx
+  artifactKey: Guid(93905221c2fa69644bba622e5acfd4a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FBX format/towerSquare_bottomB.fbx using Guid(93905221c2fa69644bba622e5acfd4a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '264f9c5c0f188c6cec801bc98837c700') in 0.030223 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/FBX format/towerSquare_middleA.fbx
+  artifactKey: Guid(d4d5df1b7e8990d4cbcd1343c2cc9ac0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FBX format/towerSquare_middleA.fbx using Guid(d4d5df1b7e8990d4cbcd1343c2cc9ac0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04b16057ed1a1949519669ca06af413e') in 0.037523 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/FBX format/towerSquare_roofC.fbx
+  artifactKey: Guid(72bf8669684b7e149b15931cf96ac25a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FBX format/towerSquare_roofC.fbx using Guid(72bf8669684b7e149b15931cf96ac25a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c25e619a233e2c635ba4fd6c631fbaf6') in 0.033261 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/FBX format/towerSquare_sampleB.fbx
+  artifactKey: Guid(71e2793fe02bcd6449e696206e3b430e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FBX format/towerSquare_sampleB.fbx using Guid(71e2793fe02bcd6449e696206e3b430e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67a65e790ea6d6912ccb6c924814f8bd') in 0.028247 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1782.928535 seconds.
+  path: Assets/FBX format/woodStructure.fbx
+  artifactKey: Guid(e179bc5c1068f5649b42e3aa5915710d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FBX format/woodStructure.fbx using Guid(e179bc5c1068f5649b42e3aa5915710d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a013753434e6b6b53a3aa98f5e245e4') in 0.047055 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.632172 seconds.
+  path: Packages/com.unity.services.core/Editor/Core/UiHelpers/UXML/AccessTokenError.uxml
+  artifactKey: Guid(9bbe9fb6e9537684cac89a4e82cf3d63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.services.core/Editor/Core/UiHelpers/UXML/AccessTokenError.uxml using Guid(9bbe9fb6e9537684cac89a4e82cf3d63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bda8d13c388491e806223e61b34fd349') in 0.008395 seconds 
